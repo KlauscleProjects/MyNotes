@@ -19,10 +19,10 @@ class Posts extends Controller
     {
 
         //get posts
-        $posts = $this->postModel->getPosts();
+        // $posts = $this->postModel->getPosts();
 
         $data = [
-            'posts' => $posts
+            //'posts' => $posts
         ];
         $this->loadView('posts/index', $data);
     }

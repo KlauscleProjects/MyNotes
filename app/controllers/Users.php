@@ -156,9 +156,9 @@ class Users extends Controller
 
     public function createUserSession($loggedInUser)
     {
-        $_SESSION['user_id'] = $loggedInUser->id;
-        $_SESSION['user_email'] = $loggedInUser->email;
-        $_SESSION['user_name'] = $loggedInUser->name;
+        $_SESSION['user_id'] = $loggedInUser->user_id;
+        $_SESSION['user_email'] = $loggedInUser->user_email;
+        $_SESSION['user_fname'] = $loggedInUser->user_fname;
         redirect('posts/index');
     }
 

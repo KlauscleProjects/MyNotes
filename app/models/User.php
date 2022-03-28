@@ -54,12 +54,12 @@ class User
 
     //login user
     public function login($email, $password){
-        $this->db->query("SELECT * FROM tbl_users WHERE email=:email");
+        $this->db->query("SELECT * FROM tbl_users WHERE user_email=:email");
         $this->db->bind(':email', $email);
 
         $row = $this->db->singleRow();
 
-        $hashed_password = $row->password; //password column
+        $hashed_password = $row->user_password; //password column
         if(password_verify($password, $hashed_password)){
             return $row; // the whole user row
         }else{
