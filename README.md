@@ -1,2 +1,2 @@
-# MVCSharedPost
-<p>this tutorial is from Udemy, Object Oriented PHP & MVC by Brad Traversy</p>
+# Notes
+<p>A simple note taking web page with login and registration</p>
