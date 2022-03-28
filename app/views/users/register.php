@@ -6,9 +6,14 @@
             <p>Please fill out this form to register with us</p>
             <form action="<?php echo URLROOT; ?>/users/register" method="post">
                 <div class="form-group">
-                    <label for="name">Name: <sup>*</sup></label>
-                    <input type="text" name="name" id="" class="form-control form-control-lg <?php echo (!empty($data['error_name'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
-                    <span class="invalid-feedback"><?php echo $data['error_name']; ?></span>
+                    <label for="name">First Name: <sup>*</sup></label>
+                    <input type="text" name="fname" id="" class="form-control form-control-lg <?php echo (!empty($data['error_fname'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['fname']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['error_fname']; ?></span>
+                </div>
+                <div class="form-group">
+                    <label for="name">Last Name: <sup>*</sup></label>
+                    <input type="text" name="lname" id="" class="form-control form-control-lg <?php echo (!empty($data['error_lname'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['lname']; ?>">
+                    <span class="invalid-feedback"><?php echo $data['error_lname']; ?></span>
                 </div>
                 <div class="form-group">
                     <label for="email">Email: <sup>*</sup></label>

@@ -17,11 +17,13 @@ class Users extends Controller
 
             //init data
             $data = [
-                'name' => trim($_POST['name']),
+                'fname' => trim($_POST['fname']),
+                'lname' => trim($_POST['lname']),
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'confirm_password' => trim($_POST['confirm_password']),
-                'error_name' => '',
+                'error_fname' => '',
+                'error_lname' => '',
                 'error_email' => '',
                 'error_password' => '',
                 'error_confirm_password' => ''
@@ -37,8 +39,11 @@ class Users extends Controller
                 }
             }
 
-            if (empty($data['name'])) {
-                $data['error_name'] = "Please enter name";
+            if (empty($data['fname'])) {
+                $data['error_fname'] = "Please enter your first name";
+            }
+            if (empty($data['lname'])) {
+                $data['error_lname'] = "Please enter your last name";
             }
 
             if (empty($data['password'])) {
@@ -56,7 +61,7 @@ class Users extends Controller
             }
 
             //make sure error are empty
-            if (empty($data['error_email']) && empty($data['error_name']) && empty($data['error_password']) && empty($data['error_confirm_password'])) {
+            if (empty($data['error_email']) && empty($data['error_fname']) && empty($data['error_lname']) && empty($data['error_password']) && empty($data['error_confirm_password'])) {
                 //hash password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
@@ -74,11 +79,13 @@ class Users extends Controller
         } else {
             //init data
             $data = [
-                'name' => '',
+                'fname' => '',
+                'lname' => '',
                 'email' => '',
                 'password' => '',
                 'confirm_password' => '',
-                'error_name' => '',
+                'error_fname' => '',
+                'error_lname' => '',
                 'error_email' => '',
                 'error_password' => '',
                 'error_confirm_password' => ''

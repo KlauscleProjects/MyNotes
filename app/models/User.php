@@ -11,7 +11,7 @@ class User
     //find user by email
     public function findUserByEmail($email)
     {
-        $this->db->query("SELECT * FROM users WHERE email= :email");
+        $this->db->query("SELECT * FROM tbl_users WHERE user_email= :email");
         $this->db->bind(':email', $email);
 
         $row = $this->db->singleRow();
@@ -26,7 +26,7 @@ class User
     //find user by id
     public function getUserById($user_id)
     {
-        $this->db->query("SELECT * FROM users WHERE id= :user_id");
+        $this->db->query("SELECT * FROM tbl_users WHERE user_id= :user_id");
         $this->db->bind(':user_id', $user_id);
 
         $row = $this->db->singleRow();
@@ -37,10 +37,12 @@ class User
     //register user
     public function register($data)
     {
-        $this->db->query("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
-        $this->db->bind(':name', $data['name']);
+        $this->db->query("INSERT INTO tbl_users (user_fname, user_lname, user_email, user_password, created_at) VALUES (:fname, :lname, :email, :password, :created_at)");
+        $this->db->bind(':fname', $data['fname']);
+        $this->db->bind(':lname', $data['lname']);
         $this->db->bind(':email',  $data['email']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':created_at', date('Y-m-d H:i:s'));
 
         //execute
         if ($this->db->execute()) {
@@ -52,7 +54,7 @@ class User
 
     //login user
     public function login($email, $password){
-        $this->db->query("SELECT * FROM users WHERE email=:email");
+        $this->db->query("SELECT * FROM tbl_users WHERE email=:email");
         $this->db->bind(':email', $email);
 
         $row = $this->db->singleRow();
