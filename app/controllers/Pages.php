@@ -12,8 +12,8 @@ class Pages extends Controller
         }
 
         $data = [
-            'title' => 'MVC Shared Post',
-            'description' => 'Simple social network built on the TraversyMVC PHP Framwork'
+            'title' => 'My Notes',
+            'description' => 'A simple note taking web page with login and registration'
         ];
 
         $this->loadView("pages/index", $data);
@@ -23,7 +23,7 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'About Page',
-            'description' => 'App to share posts with other users'
+            'description' => 'A simple note taking web page with login and registration'
         ];
         $this->loadView("pages/about", $data);
     }
