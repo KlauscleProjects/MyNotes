@@ -21,7 +21,7 @@
                         <img src="<?php echo URLROOT;?>/assets/uploads/male-avatar03.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="#" class="d-block"><?php echo $_SESSION['user_fname']; ?></a>
                     </div>
                 </div>
 
