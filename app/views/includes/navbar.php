@@ -28,12 +28,9 @@
                                 <a href="<?php echo URLROOT; ?>/users/login" class="nav-link">Login</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                <i class="fas fa-expand-arrows-alt"></i>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
             </div>
         </nav> <!-- end of top nav -->
+        

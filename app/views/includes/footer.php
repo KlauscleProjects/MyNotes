@@ -1,4 +1,3 @@
-</div>
 </body>
 <script src="<?php echo URLROOT; ?>/assets/plugins/jquery/jquery.min.js"></script>
 <script src="<?php echo URLROOT; ?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
