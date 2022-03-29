@@ -10,7 +10,7 @@ class Notes extends Controller
             redirect('users/login');
         }
 
-        $this->postModel = $this->model('Note');
+        $this->noteModel = $this->model('Note');
         $this->userModel = $this->model('User');
     }
 
@@ -21,7 +21,7 @@ class Notes extends Controller
         // $posts = $this->postModel->getPosts();
 
         $data = [
-            'title' => "My Notes",
+            'page_title' => "My Notes",
             //'posts' => $posts
         ];
 
@@ -30,31 +30,29 @@ class Notes extends Controller
 
     public function add()
     {
-        $data = [
-            'title' => "Add Note",
-            //'posts' => $posts
-        ];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-        $this->loadView('notes/add', $data);
-    }
+            $data = [
+                'page_title' => "Add Note",
+                'note_title' => trim($_POST['note_title']),
+                'note_body' => trim($_POST['note_body']),
+                'user_id' => $_SESSION['user_id'],
+            ];
 
-    public function archives()
-    {
-        $data = [
-            'title' => "Archive Notes",
-            //'posts' => $posts
-        ];
+            if ($this->noteModel->addNote($data)) {
+                flash('the_message', 'Note successfully created');
+                redirect('notes');
+            } else {
+                die("Something went wrong");
+            }
+        } else {
+            $data = [
+                'page_title' => "Add Note",
+                'user_id' => $_SESSION['user_id'],
+            ];
 
-        $this->loadView('notes/archives', $data);
-    }
-
-    public function tags()
-    {
-        $data = [
-            'title' => "Tags",
-            //'posts' => $posts
-        ];
-
-        $this->loadView('notes/tags', $data);
+            $this->loadView('notes/add', $data);
+        }
     }
 }
