@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
+<?php require APPROOT . '/views/includes/navbar.php'; ?>
 <div class="container">
 
     <div class="jumbotron jumbotron-flud text-center m-5">
