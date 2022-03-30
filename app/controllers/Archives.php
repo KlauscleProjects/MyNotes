@@ -10,22 +10,21 @@ class Archives extends Controller
             redirect('users/login');
         }
 
-        $this->postModel = $this->model('Archive');
+        $this->archiveModel = $this->model('Archive');
         $this->userModel = $this->model('User');
     }
 
     public function index()
     {
 
-        //get posts
-        // $posts = $this->postModel->getPosts();
+        //get archive notes
+        $archives = $this->archiveModel->getNotes();
 
         $data = [
-            'title' => "Archive Notes",
-            //'posts' => $posts
+            'page_title' => "Archive Notes",
+            'notes' => $archives
         ];
 
         $this->loadView('archives/index', $data);
     }
-
 }
