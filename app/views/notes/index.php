@@ -26,8 +26,8 @@
                                             <?php echo $note->note_title; ?>
                                         </b>
                                         <div class="card-tools">
-                                            <button type="button" class="btn btn-tool"><i class="fas fa-archive"></i></button>
-                                            <button type="button" class="btn btn-tool"><i class="fas fa-times"></i></button>
+                                            <button type="button" class="btn btn-tool" onclick="archive_note('<?php echo URLROOT; ?>/notes/archive/', <?php echo $note->note_id; ?>)"><i class="fas fa-archive"></i></button>
+                                            <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/notes/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
                                     <a href="<?php echo URLROOT; ?>/notes/edit/<?php echo $note->note_id; ?>" class="note-body">
@@ -41,7 +41,11 @@
                                     </a>
                                     <div class="card-footer">
                                         <div class="float-right">
-                                            <i><?php echo $note->noteCreatedAt; ?></i>
+                                            <?php if (empty($note->edited_at)) : ?>
+                                                <i>Created <?php echo $note->noteCreatedAt; ?></i>
+                                            <?php else : ?>
+                                                <i>Edited <?php echo $note->edited_at; ?></i>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +53,11 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                 <?php else : ?>
-                    <?php echo "No Notes"; ?>
+                    <div class="card card-body mb-3">
+                        <div class="bg-light p-2 mb-3">
+                            <h3 class='center'>No notes</h3>
+                        </div>
+                    </div>
                 <?php endif; ?>
 
             </div>
