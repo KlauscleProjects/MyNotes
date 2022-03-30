@@ -76,7 +76,7 @@ class Notes extends Controller
                 die("Something went wrong");
             }
         } else {
-            // get existing post from model
+            // get existing note from model
             $note = $this->noteModel->getNoteById($note_id);
 
             //check for owner
@@ -99,12 +99,36 @@ class Notes extends Controller
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $data = [
-                'note_id' => $note_id,
-                'user_id' => $_SESSION['user_id'],
-            ];
+            // get existing note from model
+            $note = $this->noteModel->getNoteById($note_id);
 
-            if ($this->noteModel->archiveNote($data)) {
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('notes');
+            }
+
+            if ($this->noteModel->archiveNote($note_id)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
+
+    public function delete($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // get existing note from model
+            $note = $this->noteModel->getNoteById($note_id);
+
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('notes');
+            }
+
+            if ($this->noteModel->toTrashNote($note_id)) {
                 //redirect('notes');
                 //reload the page base on the sweet alert of javascript
             } else {

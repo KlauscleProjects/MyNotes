@@ -13,6 +13,20 @@ function archive_note(actionPath, token) {
     sweetAlert(params);
 }
 
+function delete_note(actionPath, token) {
+    var params = {
+        token: token,
+        messageBefore: "This will go on the trash and not permanently be deleted.",
+        iconBefore: "warning",
+        confirmButtonText: "Yes, delete it",
+        messageSuccessTitle: "Deleted Success",
+        messageSuccess: "Note has been deleted successfully",
+        tokenID: token,
+        url: actionPath + token,
+    };
+    sweetAlert(params);
+}
+
 function sweetAlert(params) {
     Swal.fire({
         title: 'Are you sure?',
