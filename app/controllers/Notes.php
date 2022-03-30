@@ -94,4 +94,22 @@ class Notes extends Controller
             $this->loadView('notes/edit', $data);
         }
     }
+
+    public function archive($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $data = [
+                'note_id' => $note_id,
+                'user_id' => $_SESSION['user_id'],
+            ];
+
+            if ($this->noteModel->archiveNote($data)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
 }
