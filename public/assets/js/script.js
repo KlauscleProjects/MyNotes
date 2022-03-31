@@ -27,6 +27,21 @@ function delete_note(actionPath, token) {
     sweetAlert(params);
 }
 
+function restoreNoteFromTrash(actionPath, token) {
+    var params = {
+        token: token,
+        messageBefore: "Once your restore, this will display again in its original location.",
+        iconBefore: "warning",
+        confirmButtonText: "Yes, restore it",
+        messageSuccessTitle: "Restoring Success",
+        messageSuccess: "Note has been restored successfully",
+        tokenID: token,
+        url: actionPath + token,
+    };
+
+    sweetAlert(params);
+}
+
 function sweetAlert(params) {
     Swal.fire({
         title: 'Are you sure?',
