@@ -48,4 +48,25 @@ class Archives extends Controller
             }
         }
     }
+
+    public function delete($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // get existing note from model
+            $note = $this->archiveModel->getNoteById($note_id);
+
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('notes');
+            }
+
+            if ($this->archiveModel->toTrashNote($note_id)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
 }

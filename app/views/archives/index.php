@@ -28,7 +28,7 @@
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" onclick="restoreNote('<?php echo URLROOT; ?>/archives/restore/',<?php echo $note->note_id; ?>)"><i class="fas fa-solid fa-file-arrow-up"></i></button>
                                             
-                                            <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/notes/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
+                                            <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/archives/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
                                     <a href="<?php echo URLROOT; ?>/notes/edit/<?php echo $note->note_id; ?>" class="note-body">
