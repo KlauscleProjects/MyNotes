@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
     <!-- sweet alert -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- datatables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+
+    <!-- customized -->
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/assets/css/style.css">
 
     <link href="<?php echo URLROOT; ?>/assets/img/notes_logo.png" rel="icon">
