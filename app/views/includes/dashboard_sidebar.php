@@ -33,12 +33,6 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="../widgets.html" class="nav-link">
-                                <i class="nav-icon fas fa-home"></i>
-                                <p> Home </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="<?php echo URLROOT; ?>/notes/index" class="nav-link">
                                 <i class="nav-icon fas fa-sticky-note"></i>
                                 <p> Notes </p>
@@ -60,6 +54,12 @@
                             <a href="<?php echo URLROOT; ?>/tags/index" class="nav-link">
                                 <i class="nav-icon fas fa-solid fa-tag"></i>
                                 <p> Tags </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo URLROOT; ?>/trashes/index" class="nav-link">
+                                <i class="nav-icon fas fa-solid fa-trash"></i>
+                                <p> Trash </p>
                             </a>
                         </li>
                         <li class="nav-item">
