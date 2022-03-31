@@ -34,7 +34,22 @@ function restoreNoteFromTrash(actionPath, token) {
         iconBefore: "warning",
         confirmButtonText: "Yes, restore it",
         messageSuccessTitle: "Restoring Success",
-        messageSuccess: "Note has been restored successfully",
+        messageSuccess: "Note has been restored successfully.",
+        tokenID: token,
+        url: actionPath + token,
+    };
+
+    sweetAlert(params);
+}
+
+function deleteNotePermanently(actionPath, token) {
+    var params = {
+        token: token,
+        messageBefore: "This will be deleted permanenlty and cannot be restored",
+        iconBefore: "warning",
+        confirmButtonText: "Yes, delete it",
+        messageSuccessTitle: "Deleted Permanenty",
+        messageSuccess: "Note has been deleted permanently.",
         tokenID: token,
         url: actionPath + token,
     };

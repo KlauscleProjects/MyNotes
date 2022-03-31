@@ -47,4 +47,17 @@ class Trash
             return false;
         }
     }
+
+    public function deletePermanently($note_id)
+    {
+        $this->db->query("DELETE FROM tbl_notes WHERE note_id=:note_id");
+        $this->db->bind(':note_id', $note_id);
+
+        //execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

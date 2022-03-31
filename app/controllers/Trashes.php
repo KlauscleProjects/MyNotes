@@ -18,7 +18,7 @@ class Trashes extends Controller
     {
 
         //get trash notes
-        $trashes= $this->trashModel->getTrash();
+        $trashes = $this->trashModel->getTrash();
 
         $data = [
             'page_title' => "Trash",
@@ -49,4 +49,24 @@ class Trashes extends Controller
         }
     }
 
+    public function delete($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // get existing note from model
+            $note = $this->trashModel->getNoteById($note_id);
+
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('notes');
+            }
+
+            if ($this->trashModel->deletePermanently($note_id)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
 }

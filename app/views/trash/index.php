@@ -27,7 +27,7 @@
                                         </b>
                                         <div class="card-tools">
                                             <button type="button" class="btn btn-tool" onclick="restoreNoteFromTrash('<?php echo URLROOT; ?>/trashes/restore/',<?php echo $note->note_id; ?>)"><i class="fas fa-solid fa-trash-arrow-up"></i></button>
-                                            <button type="button" class="btn btn-tool" onclick="delete_note_permanently('<?php echo URLROOT; ?>/trashes/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
+                                            <button type="button" class="btn btn-tool" onclick="deleteNotePermanently('<?php echo URLROOT; ?>/trashes/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
                                             <i class="fa-solid fa-trash-can-xmark"></i>
                                         </div>
                                     </div>
