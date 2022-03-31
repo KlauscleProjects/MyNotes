@@ -49,6 +49,23 @@ class Archive
         }
     }
 
+    public function updateNote($data)
+    {
+        $this->db->query("UPDATE tbl_notes SET note_title=:note_title, note_body=:note_body, edited_at=:edited_at WHERE note_id=:note_id");
+
+        $this->db->bind(':note_id', $data['note_id']);
+        $this->db->bind(':note_title', $data['note_title']);
+        $this->db->bind(':note_body', $data['note_body']);
+        $this->db->bind(':edited_at', date('Y-m-d H:i:s'));
+
+        //execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function toTrashNote($note_id)
     {
         $this->db->query("UPDATE tbl_notes SET note_trash=1 WHERE note_id=:note_id");

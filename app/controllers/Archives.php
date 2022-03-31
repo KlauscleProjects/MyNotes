@@ -49,6 +49,45 @@ class Archives extends Controller
         }
     }
 
+    public function edit($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'page_title' => "Edit Archive Note",
+                'note_id' => $note_id,
+                'note_title' => trim($_POST['note_title']),
+                'note_body' => trim($_POST['note_body']),
+                'user_id' => $_SESSION['user_id'],
+            ];
+
+            if ($this->archiveModel->updateNote($data)) {
+                flash('the_message', 'Note successfully updated');
+                redirect('archives');
+            } else {
+                die("Something went wrong");
+            }
+        } else {
+            // get existing note from model
+            $note = $this->archiveModel->getNoteById($note_id);
+
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('archives');
+            }
+
+            $data = [
+                'page_title' => "Edit Archive Note",
+                'note_id' => $note_id,
+                'note_title' => $note->note_title,
+                'note_body' => $note->note_body,
+                'user_id' => $_SESSION['user_id'],
+            ];
+            $this->loadView('archives/edit', $data);
+        }
+    }
+
     public function delete($note_id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

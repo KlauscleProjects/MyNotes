@@ -31,7 +31,7 @@
                                             <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/archives/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
                                         </div>
                                     </div>
-                                    <a href="<?php echo URLROOT; ?>/notes/edit/<?php echo $note->note_id; ?>" class="note-body">
+                                    <a href="<?php echo URLROOT; ?>/archives/edit/<?php echo $note->note_id; ?>" class="note-body">
                                         <div class="card-body" style="color: black">
                                             <?php if (strlen($note->note_body) > 50) : ?>
                                                 <?php echo substr($note->note_body, 0, 120) . '...'; ?>

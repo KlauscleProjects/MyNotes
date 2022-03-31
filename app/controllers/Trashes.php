@@ -78,7 +78,7 @@ class Trashes extends Controller
             }
 
             $data = [
-                'page_title' => "Edit Note",
+                'page_title' => "Show Note",
                 'note_id' => $note_id,
                 'note_title' => $note->note_title,
                 'note_body' => $note->note_body,
