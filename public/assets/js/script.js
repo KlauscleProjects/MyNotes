@@ -27,7 +27,7 @@ function delete_note(actionPath, token) {
     sweetAlert(params);
 }
 
-function restoreNoteFromTrash(actionPath, token) {
+function restoreNote(actionPath, token) {
     var params = {
         token: token,
         messageBefore: "Once your restore, this will display again in its original location.",

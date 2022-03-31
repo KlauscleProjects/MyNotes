@@ -27,4 +27,25 @@ class Archives extends Controller
 
         $this->loadView('archives/index', $data);
     }
+
+    public function restore($note_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // get existing note from model
+            $note = $this->archiveModel->getNoteById($note_id);
+
+            //check for owner
+            if ($note->user_id != $_SESSION['user_id']) {
+                redirect('trash');
+            }
+
+            if ($this->archiveModel->restoreNote($note_id)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
 }

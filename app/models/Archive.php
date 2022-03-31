@@ -24,4 +24,27 @@ class Archive
 
         return $result;
     }
+
+    public function getNoteById($note_id)
+    {
+        $this->db->query("SELECT * FROM tbl_notes WHERE note_id = :note_id");
+        $this->db->bind(':note_id', $note_id);
+
+        $row = $this->db->singleRow();
+
+        return $row;
+    }
+
+    public function restoreNote($note_id)
+    {
+        $this->db->query("UPDATE tbl_notes SET note_archive=0 WHERE note_id=:note_id");
+        $this->db->bind(':note_id', $note_id);
+
+        //execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
