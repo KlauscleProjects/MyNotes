@@ -29,7 +29,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="float-right">
-                                    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Save</in>
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
                                 </div>
                             </div>
                         </form>

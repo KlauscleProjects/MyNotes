@@ -33,7 +33,7 @@
                             <div class="card-footer">
                                 <div class="float-right">
                                     <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Reset</button>
-                                    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Save</in>
+                                    <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Save</button>
                                 </div>
                             </div>
                         </form>
