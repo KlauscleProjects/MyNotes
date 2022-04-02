@@ -3,6 +3,7 @@ class Notes extends Controller
 {
     private $noteModel;
     private $userModel;
+    private $tagModel;
 
     public function __construct()
     {
@@ -12,6 +13,7 @@ class Notes extends Controller
 
         $this->noteModel = $this->model('Note');
         $this->userModel = $this->model('User');
+        $this->tagModel = $this->model('Tag');
     }
 
     public function index()
@@ -20,9 +22,13 @@ class Notes extends Controller
         //get notes
         $notes = $this->noteModel->getNotes();
 
+        //get tags
+        $tags = $this->tagModel->getTags();
+
         $data = [
             'page_title' => "My Notes",
-            'notes' => $notes
+            'notes' => $notes,
+            'tags' => $tags
         ];
 
         $this->loadView('notes/index', $data);
@@ -30,6 +36,10 @@ class Notes extends Controller
 
     public function add()
     {
+        //get tags
+        $tags = $this->tagModel->getTags();
+
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -37,7 +47,9 @@ class Notes extends Controller
                 'page_title' => "Add Note",
                 'note_title' => trim($_POST['note_title']),
                 'note_body' => trim($_POST['note_body']),
+                'tag_id' => trim($_POST['tag_id']),
                 'user_id' => $_SESSION['user_id'],
+                'tags' => $tags
             ];
 
             if ($this->noteModel->addNote($data)) {
@@ -50,6 +62,7 @@ class Notes extends Controller
             $data = [
                 'page_title' => "Add Note",
                 'user_id' => $_SESSION['user_id'],
+                'tags' => $tags
             ];
 
             $this->loadView('notes/add', $data);

@@ -29,6 +29,16 @@
                                 <div class="form-group">
                                     <textarea id="compose-textarea" name="note_body" class="form-control" style="height: 300px"> </textarea>
                                 </div>
+                                <div class="form-group">
+                                    <select class="custom-select" name="tag_id">
+                                        <option value="0" style="display:none">Select a tag</option>
+                                        <?php foreach ($data['tags'] as $tag) : ?>
+                                            <?php if ($tag->user_id == $_SESSION['user_id']) : ?>
+                                                <option value="<?php echo $tag->tag_id ?>"><?php echo $tag->tag_title ?></option>
+                                            <?php endif; ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
                             </div>
                             <div class="card-footer">
                                 <div class="float-right">
