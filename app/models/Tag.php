@@ -60,4 +60,17 @@ class Tag
             return false;
         }
     }
+
+    public function deletePermanently($tag_id)
+    {
+        $this->db->query("DELETE FROM tbl_tags WHERE tag_id=:tag_id");
+        $this->db->bind(':tag_id', $tag_id);
+
+        //execute
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

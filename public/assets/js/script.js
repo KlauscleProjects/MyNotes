@@ -45,11 +45,26 @@ function restoreNote(actionPath, token) {
 function deleteNotePermanently(actionPath, token) {
     var params = {
         token: token,
-        messageBefore: "This will be deleted permanenlty and cannot be restored",
+        messageBefore: "This will be deleted permanently and cannot be restored",
         iconBefore: "warning",
         confirmButtonText: "Yes, delete it",
         messageSuccessTitle: "Deleted Permanenty",
         messageSuccess: "Note has been deleted permanently.",
+        tokenID: token,
+        url: actionPath + token,
+    };
+
+    sweetAlert(params);
+}
+
+function deleteTag(actionPath, token) {
+    var params = {
+        token: token,
+        messageBefore: "This will be deleted permanently and cannot be restored",
+        iconBefore: "warning",
+        confirmButtonText: "Yes, delete it",
+        messageSuccessTitle: "Deleted Permanenty",
+        messageSuccess: "Tag has been deleted permanently.",
         tokenID: token,
         url: actionPath + token,
     };

@@ -50,7 +50,9 @@
                                             <td class="text-center py-0 align-middle">
                                                 <div class="btn-group btn-group-sm">
                                                     <a href="<?php echo URLROOT; ?>/tags/edit/<?php echo $tag->tag_id; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                                                    <button type="button" class="btn btn-danger" onclick="deleteTag()"><i class="fas fa-trash"></i></button>
+                                                    <button type="button" class="btn btn-danger" onclick="deleteTag('<?php echo URLROOT; ?>/tags/delete/',<?php echo $tag->tag_id; ?>)"><i class="fas fa-trash"></i></button>
+
+
                                                 </div>
                                             </td>
                                         </tr>

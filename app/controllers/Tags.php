@@ -95,4 +95,26 @@ class Tags extends Controller
             $this->loadView('tags/edit', $data);
         }
     }
+
+
+    public function delete($tag_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // get existing tag from model
+            $tag = $this->tagModel->getTagById($tag_id);
+
+            //check for owner
+            if ($tag->user_id != $_SESSION['user_id']) {
+                redirect('tags');
+            }
+
+            if ($this->tagModel->deletePermanently($tag_id)) {
+                //redirect('notes');
+                //reload the page base on the sweet alert of javascript
+            } else {
+                die("Something went wrong");
+            }
+        }
+    }
 }
