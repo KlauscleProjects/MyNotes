@@ -39,20 +39,18 @@
                             <thead class="text-center">
                                 <th>Tag ID</th>
                                 <th>Tag Title</th>
-                                <th>Created At</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
-                                <?php foreach ($data['tags'] as $tag): ?>
+                                <?php foreach ($data['tags'] as $tag) : ?>
                                     <?php if ($tag->user_id == $_SESSION['user_id']) : ?>
                                         <tr>
                                             <td><?php echo $tag->tag_id; ?></td>
                                             <td><?php echo $tag->tag_title; ?></td>
-                                            <td><?php echo $tag->created_at; ?></td>
-                                            <td class="text-center">
+                                            <td class="text-center py-0 align-middle">
                                                 <div class="btn-group btn-group-sm">
-                                                    <a href="users_updatestaff.php?token=1" class="btn btn-primary"><span><i class="far fa-edit"></i></span></a><input type="hidden" class="delete_id_value" value="1">
-                                                    <a href="javascript:void(0)" class="delete_btn_staff btn btn-danger"><span><i class="fas fa-trash-alt"></i></span></a>
+                                                    <a href="<?php echo URLROOT; ?>/tags/edit/<?php echo $tag->tag_id; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                                    <button type="button" class="btn btn-danger" onclick="deleteTag()"><i class="fas fa-trash"></i></button>
                                                 </div>
                                             </td>
                                         </tr>
