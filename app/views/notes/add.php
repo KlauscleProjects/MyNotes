@@ -30,14 +30,18 @@
                                     <textarea id="compose-textarea" name="note_body" class="form-control" style="height: 300px"> </textarea>
                                 </div>
                                 <div class="form-group">
-                                    <select class="custom-select" name="tag_id">
-                                        <option value="0" style="display:none">Select a tag</option>
-                                        <?php foreach ($data['tags'] as $tag) : ?>
-                                            <?php if ($tag->user_id == $_SESSION['user_id']) : ?>
-                                                <option value="<?php echo $tag->tag_id ?>"><?php echo $tag->tag_title ?></option>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </select>
+                                    <?php if (count($data['tagsByUser']) > 0) : ?>
+                                        <select class="custom-select" name="tag_id">
+                                            <option value="0" style="display:none">Select a tag</option>
+                                            <?php foreach ($data['tags'] as $tag) : ?>
+                                                <?php if ($tag->user_id == $_SESSION['user_id']) : ?>
+                                                    <option value="<?php echo $tag->tag_id ?>"><?php echo $tag->tag_title ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    <?php else : ?>
+                                        <input type="text" class="form-control" placeholder="No tags list" readonly>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                             <div class="card-footer">

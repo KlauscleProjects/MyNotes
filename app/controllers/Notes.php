@@ -20,7 +20,7 @@ class Notes extends Controller
     {
 
         //get notes
-        $notes = $this->noteModel->getNotes();
+        $notes = $this->noteModel->getNotes($_SESSION['user_id']);
 
         //get tags
         $tags = $this->tagModel->getTags();
@@ -36,8 +36,11 @@ class Notes extends Controller
 
     public function add()
     {
-        //get tags
+        //get all tags
         $tags = $this->tagModel->getTags();
+
+        //get all tags by user
+        $tagsByUser = $this->tagModel->getTagByUserId($_SESSION['user_id']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -61,7 +64,8 @@ class Notes extends Controller
             $data = [
                 'page_title' => "Add Note",
                 'user_id' => $_SESSION['user_id'],
-                'tags' => $tags
+                'tags' => $tags,
+                'tagsByUser' =>  $tagsByUser
             ];
 
             $this->loadView('notes/add', $data);
@@ -72,6 +76,9 @@ class Notes extends Controller
     {
         //get tags
         $tags = $this->tagModel->getTags();
+
+        //get all tags by user
+        $tagsByUser = $this->tagModel->getTagByUserId($_SESSION['user_id']);
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
@@ -111,6 +118,7 @@ class Notes extends Controller
                 'tag_id' => $note->tag_id,
                 'tags' => $tags,
                 'user_id' => $_SESSION['user_id'],
+                'tagsByUser' =>  $tagsByUser
             ];
             $this->loadView('notes/edit', $data);
         }

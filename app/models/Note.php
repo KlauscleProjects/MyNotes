@@ -9,17 +9,20 @@ class Note
     }
 
     //UNARCHIVE NOTES
-    public function getNotes()
+    public function getNotes($user_id)
     {
         $this->db->query("
         SELECT *, tbl_notes.note_id as noteID, tbl_users.user_id as userID, tbl_notes.created_at as noteCreatedAt, tbl_users.created_at as userCreatedAt
         FROM tbl_notes
         INNER JOIN tbl_users
         ON tbl_notes.user_id = tbl_users.user_id
+        AND tbl_users.user_id = :user_id
         AND note_archive = 0
         AND note_trash = 0
         ORDER BY tbl_notes.created_at DESC
         ");
+
+        $this->db->bind(':user_id', $user_id);
 
         $result = $this->db->resultSet();
 
@@ -50,6 +53,18 @@ class Note
         $this->db->bind(':note_id', $note_id);
 
         $row = $this->db->singleRow();
+
+        return $row;
+    }
+
+    public function getNoteByTagId($tag_id)
+    {
+        $this->db->query("
+        SELECT * FROM tbl_notes WHERE tag_id=:tag_id AND note_archive=0 AND note_trash=0  
+        ORDER BY tbl_notes.created_at DESC");
+        $this->db->bind(':tag_id', $tag_id);
+
+        $row = $this->db->resultSet();
 
         return $row;
     }
