@@ -9,17 +9,20 @@ class Archive
     }
 
     //ARCHIVE NOTES
-    public function getNotes()
+    public function getNotes($user_id)
     {
         $this->db->query("
         SELECT *, tbl_notes.note_id as noteID, tbl_users.user_id as userID, tbl_notes.created_at as noteCreatedAt, tbl_users.created_at as userCreatedAt
         FROM tbl_notes
         INNER JOIN tbl_users
         ON tbl_notes.user_id = tbl_users.user_id
+        AND tbl_users.user_id = :user_id
         AND note_archive = 1
         AND note_trash = 0
         ORDER BY tbl_notes.created_at DESC
         ");
+
+        $this->db->bind(':user_id', $user_id);
 
         $result = $this->db->resultSet();
 

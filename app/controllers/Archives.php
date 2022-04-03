@@ -20,7 +20,7 @@ class Archives extends Controller
     {
 
         //get archive notes
-        $archives = $this->archiveModel->getNotes();
+        $archives = $this->archiveModel->getNotes($_SESSION['user_id']);
 
         //get tags
         $tags = $this->tagModel->getTags();
@@ -60,6 +60,9 @@ class Archives extends Controller
         //get tags
         $tags = $this->tagModel->getTags();
 
+        //get all tags by user
+        $tagsByUser = $this->tagModel->getTagByUserId($_SESSION['user_id']);
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -98,6 +101,7 @@ class Archives extends Controller
                 'tag_id' => $note->tag_id,
                 'tags' => $tags,
                 'user_id' => $_SESSION['user_id'],
+                'tagsByUser' =>  $tagsByUser
             ];
             $this->loadView('archives/edit', $data);
         }
