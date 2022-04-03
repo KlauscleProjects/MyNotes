@@ -39,7 +39,6 @@ class Notes extends Controller
         //get tags
         $tags = $this->tagModel->getTags();
 
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -71,6 +70,9 @@ class Notes extends Controller
 
     public function edit($note_id)
     {
+        //get tags
+        $tags = $this->tagModel->getTags();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -79,7 +81,9 @@ class Notes extends Controller
                 'note_id' => $note_id,
                 'note_title' => trim($_POST['note_title']),
                 'note_body' => trim($_POST['note_body']),
+                'tag_id' => trim($_POST['tag_id']),
                 'user_id' => $_SESSION['user_id'],
+                'tags' => $tags
             ];
 
             if ($this->noteModel->updateNote($data)) {
@@ -102,6 +106,10 @@ class Notes extends Controller
                 'note_id' => $note_id,
                 'note_title' => $note->note_title,
                 'note_body' => $note->note_body,
+                'created_at' => $note->created_at,
+                'edited_at' => $note->edited_at,
+                'tag_id' => $note->tag_id,
+                'tags' => $tags,
                 'user_id' => $_SESSION['user_id'],
             ];
             $this->loadView('notes/edit', $data);
