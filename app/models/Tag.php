@@ -19,6 +19,20 @@ class Tag
         return $result;
     }
 
+    public function getTagByUserId($user_id)
+    {
+        $this->db->query("
+        SELECT * FROM tbl_tags WHERE user_id=:user_id
+        ORDER BY created_at DESC
+        ");
+
+        $this->db->bind(':user_id', $user_id);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
     public function getTagById($tag_id)
     {
         $this->db->query("SELECT * FROM tbl_tags WHERE tag_id = :tag_id");
@@ -63,6 +77,12 @@ class Tag
 
     public function deletePermanently($tag_id)
     {
+
+        //update the tag_id from tbl_notes back to 0
+        $this->db->query("UPDATE tbl_notes SET tag_id=0 WHERE tag_id=:tag_id");
+        $this->db->bind(':tag_id', $tag_id);
+        $this->db->execute();
+        
         $this->db->query("DELETE FROM tbl_tags WHERE tag_id=:tag_id");
         $this->db->bind(':tag_id', $tag_id);
 
