@@ -159,7 +159,7 @@ class Users extends Controller
         $_SESSION['user_id'] = $loggedInUser->user_id;
         $_SESSION['user_email'] = $loggedInUser->user_email;
         $_SESSION['user_fname'] = $loggedInUser->user_fname;
-        redirect('posts/index');
+        redirect('notes/index');
     }
 
     //logout 

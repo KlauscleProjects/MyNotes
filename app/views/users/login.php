@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
+<?php require APPROOT . '/views/includes/navbar.php'; ?>
 <div class="container">
     <div class="card card-outline card-primary m-4">
         <div class="card-header text-center">

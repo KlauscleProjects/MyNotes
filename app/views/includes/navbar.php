@@ -5,8 +5,8 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
             <div class="container">
                 <a href="<?php echo URLROOT; ?>/pages/index" class="navbar-brand">
-                    <img src="<?php echo URLROOT; ?>/assets/img/notes.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-                    <span class="brand-text font-weight-light"><?php echo SITENAME;?></span>
+                    <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="MyNotes" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light"><?php echo SITENAME; ?></span>
                 </a>
 
                 <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +28,7 @@
                                 <a href="<?php echo URLROOT; ?>/users/login" class="nav-link">Login</a>
                             </li>
                         <?php endif; ?>
-                        <li class="nav-item d-none d-sm-inline-block">
-                            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                                <i class="fas fa-expand-arrows-alt"></i>
-                            </a>
-                        </li>
+
                     </ul>
                 </div>
             </div>

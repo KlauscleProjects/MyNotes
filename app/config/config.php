@@ -12,7 +12,7 @@ define('DB_NAME', 'db_notes');
 define('APPROOT', dirname(__FILE__, 2));
 
 //URL Root
-define('URLROOT', 'http://localhost/Notes');
+define('URLROOT', 'http://localhost/MyNotes');
 
 //Site Name
 define('SITENAME', "MyNotes");
