@@ -40,13 +40,11 @@
                                         </div>
                                     </a>
                                     <div class="card-footer">
-                                        <div class="float-right">
-                                            <?php if (empty($note->edited_at)) : ?>
-                                                <i>Created <?php echo $note->noteCreatedAt; ?></i>
-                                            <?php else : ?>
-                                                <i>Edited <?php echo $note->edited_at; ?></i>
+                                        <?php foreach ($data['tags'] as $tag) : ?>
+                                            <?php if ($tag->tag_id == $note->tag_id) : ?>
+                                                <span class="badge badge-secondary"><?php echo $tag->tag_title; ?></span>
                                             <?php endif; ?>
-                                        </div>
+                                        <?php endforeach; ?>
                                     </div>
                                 </div>
                             </div>
