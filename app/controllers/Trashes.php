@@ -3,6 +3,7 @@ class Trashes extends Controller
 {
     private $trashModel;
     private $userModel;
+    private $tagModel;
 
     public function __construct()
     {
@@ -12,6 +13,7 @@ class Trashes extends Controller
 
         $this->trashModel = $this->model('Trash');
         $this->userModel = $this->model('User');
+        $this->tagModel = $this->model('Tag');
     }
 
     public function index()
@@ -20,9 +22,13 @@ class Trashes extends Controller
         //get trash notes
         $trashes = $this->trashModel->getTrash();
 
+        //get tags
+        $tags = $this->tagModel->getTags();
+
         $data = [
             'page_title' => "Trash",
-            'notes' => $trashes
+            'notes' => $trashes,
+            'tags' => $tags
         ];
 
         $this->loadView('trash/index', $data);
@@ -51,41 +57,29 @@ class Trashes extends Controller
 
     public function show($note_id)
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        // get existing note from model
+        $note = $this->trashModel->getNoteById($note_id);
 
-            $data = [
-                'page_title' => "Edit Note",
-                'note_id' => $note_id,
-                'note_title' => trim($_POST['note_title']),
-                'note_body' => trim($_POST['note_body']),
-                'user_id' => $_SESSION['user_id'],
-            ];
+        //get tags
+        $tags = $this->tagModel->getTags();
 
-            if ($this->trashModel->updateNote($data)) {
-                flash('the_message', 'Note successfully updated');
-                redirect('notes');
-            } else {
-                die("Something went wrong");
-            }
-        } else {
-            // get existing note from model
-            $note = $this->trashModel->getNoteById($note_id);
-
-            //check for owner
-            if ($note->user_id != $_SESSION['user_id']) {
-                redirect('notes');
-            }
-
-            $data = [
-                'page_title' => "Show Note",
-                'note_id' => $note_id,
-                'note_title' => $note->note_title,
-                'note_body' => $note->note_body,
-                'user_id' => $_SESSION['user_id'],
-            ];
-            $this->loadView('trash/show', $data);
+        //check for owner
+        if ($note->user_id != $_SESSION['user_id']) {
+            redirect('notes');
         }
+
+        $data = [
+            'page_title' => "Show Note",
+            'note_id' => $note_id,
+            'tag_id' => $note->tag_id,
+            'note_title' => $note->note_title,
+            'note_body' => $note->note_body,
+            'created_at' => $note->created_at,
+            'edited_at' => $note->edited_at,
+            'user_id' => $_SESSION['user_id'],
+            'tags' => $tags
+        ];
+        $this->loadView('trash/show', $data);
     }
 
     public function delete($note_id)

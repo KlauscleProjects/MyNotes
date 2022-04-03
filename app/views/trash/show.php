@@ -26,6 +26,22 @@
                                 <textarea id="compose-textarea" name="note_body" class="form-control" style="height: 300px" readonly><?php echo $data['note_body']; ?></textarea>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <div class="float-left">
+                                <?php foreach ($data['tags'] as $tag) : ?>
+                                    <?php if ($tag->tag_id == $data['tag_id']) : ?>
+                                        <h5><span class="badge badge-info"><?php echo $tag->tag_title; ?></span></h5>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="float-right">
+                                <?php if (empty($data['edited_at'])) : ?>
+                                    <i>Created <?php echo $data['created_at']; ?></i>
+                                <?php else : ?>
+                                    <i>Edited <?php echo $data['edited_at']; ?></i>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
