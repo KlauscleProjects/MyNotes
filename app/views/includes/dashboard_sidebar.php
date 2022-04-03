@@ -40,7 +40,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo URLROOT; ?>/notes/add" class="nav-link">
-                                <i class="nav-icon fas fa-regular fa-square-plus"></i>
+                                <i class="nav-icon fas fa-regular fa-square-plus"></i>
                                 <p> Add Note </p>
                             </a>
                         </li>
@@ -64,7 +64,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo URLROOT; ?>/users/logout" class="nav-link">
-                                <i class="nav-icon fas fa-solid fa-right-from-bracket"></i>
+                                <i class="nav-icon fas fa-solid fa-right-from-bracket"></i>
                                 <p> Sign Out </p>
                             </a>
                         </li>
