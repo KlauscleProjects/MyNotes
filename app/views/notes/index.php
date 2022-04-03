@@ -42,7 +42,7 @@
                                     <div class="card-footer">
                                         <?php foreach ($data['tags'] as $tag) : ?>
                                             <?php if ($tag->tag_id == $note->tag_id) : ?>
-                                                <span class="badge badge-secondary"><?php echo $tag->tag_title; ?></span>
+                                                <span class="badge badge-info"><?php echo $tag->tag_title; ?></span>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </div>
