@@ -3,6 +3,7 @@ class Tags extends Controller
 {
     private $tagModel;
     private $userModel;
+    private $noteModel;
 
     public function __construct()
     {
@@ -12,6 +13,7 @@ class Tags extends Controller
 
         $this->tagModel = $this->model('Tag');
         $this->userModel = $this->model('User');
+        $this->noteModel = $this->model('Note');
     }
 
     public function index()
@@ -21,7 +23,7 @@ class Tags extends Controller
         $tags = $this->tagModel->getTags();
 
         $data = [
-            'page_title' => "Tags",
+            'page_title' => "My Tags",
             'tags' => $tags
         ];
 
@@ -96,7 +98,6 @@ class Tags extends Controller
         }
     }
 
-
     public function delete($tag_id)
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -116,5 +117,23 @@ class Tags extends Controller
                 die("Something went wrong");
             }
         }
+    }
+
+    public function show($tag_id)
+    {
+        //get notes
+        $notes = $this->noteModel->getNoteByTagId($tag_id);
+
+        //get specific tag
+        $tag = $this->tagModel->getTagById($tag_id);
+
+        $data = [
+            'page_title' => "Show Tag: ",
+            'notes' => $notes,
+            'tag_title' => $tag->tag_title,
+            'tag_id' => $tag_id
+        ];
+
+        $this->loadView('tags/show', $data);
     }
 }
