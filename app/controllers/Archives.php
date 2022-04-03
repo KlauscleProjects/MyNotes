@@ -3,6 +3,7 @@ class Archives extends Controller
 {
     private $archiveModel;
     private $userModel;
+    private $tagModel;
 
     public function __construct()
     {
@@ -12,6 +13,7 @@ class Archives extends Controller
 
         $this->archiveModel = $this->model('Archive');
         $this->userModel = $this->model('User');
+        $this->tagModel = $this->model('Tag');
     }
 
     public function index()
@@ -20,9 +22,13 @@ class Archives extends Controller
         //get archive notes
         $archives = $this->archiveModel->getNotes();
 
+        //get tags
+        $tags = $this->tagModel->getTags();
+
         $data = [
             'page_title' => "Archive Notes",
-            'notes' => $archives
+            'notes' => $archives,
+            'tags' => $tags
         ];
 
         $this->loadView('archives/index', $data);
@@ -51,6 +57,9 @@ class Archives extends Controller
 
     public function edit($note_id)
     {
+        //get tags
+        $tags = $this->tagModel->getTags();
+
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -59,7 +68,9 @@ class Archives extends Controller
                 'note_id' => $note_id,
                 'note_title' => trim($_POST['note_title']),
                 'note_body' => trim($_POST['note_body']),
+                'tag_id' => trim($_POST['tag_id']),
                 'user_id' => $_SESSION['user_id'],
+                'tags' => $tags
             ];
 
             if ($this->archiveModel->updateNote($data)) {
@@ -82,6 +93,10 @@ class Archives extends Controller
                 'note_id' => $note_id,
                 'note_title' => $note->note_title,
                 'note_body' => $note->note_body,
+                'created_at' => $note->created_at,
+                'edited_at' => $note->edited_at,
+                'tag_id' => $note->tag_id,
+                'tags' => $tags,
                 'user_id' => $_SESSION['user_id'],
             ];
             $this->loadView('archives/edit', $data);
