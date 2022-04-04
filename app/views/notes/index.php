@@ -59,6 +59,7 @@
                 <?php endif; ?>
 
             </div>
+        </div>
     </section>
 
 </div>
