@@ -19,14 +19,14 @@
                 <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="MyNotes" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">MyNotes</span>
             </a>
-            
+
             <div class="sidebar">
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
                         <img src="<?php echo URLROOT; ?>/assets/img/male-avatar05.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?php echo $_SESSION['user_fname']; ?></a>
+                        <a href="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION['user_id']; ?>" class="d-block"><?php echo $_SESSION['user_fname']; ?></a>
                     </div>
                 </div>
 
