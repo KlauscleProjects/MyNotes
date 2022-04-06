@@ -17,6 +17,7 @@ class Users extends Controller
 
             //init data
             $data = [
+                'page_title' => "REGISTRATION",
                 'fname' => trim($_POST['fname']),
                 'lname' => trim($_POST['lname']),
                 'email' => trim($_POST['email']),
@@ -79,6 +80,7 @@ class Users extends Controller
         } else {
             //init data
             $data = [
+                'page_title' => "REGISTRATION",
                 'fname' => '',
                 'lname' => '',
                 'email' => '',
@@ -105,6 +107,7 @@ class Users extends Controller
 
             //init data
             $data = [
+                'page_title' => "LOGIN",
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'error_email' => '',
@@ -143,6 +146,7 @@ class Users extends Controller
         } else {
             //init data
             $data = [
+                'page_title' => "LOGIN",
                 'email' => '',
                 'password' => '',
                 'error_email' => '',
