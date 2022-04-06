@@ -3,7 +3,7 @@
 <div class="container">
     <div class="card card-outline card-primary m-4">
         <div class="card-header text-center">
-            <p class="h1">LOGIN</p>
+            <p class="h1"><?php echo $data['page_title']; ?></p>
         </div>
         <div class="card-primary">
             <div class="card-body">
@@ -27,6 +27,11 @@
                         <div class="col">
                             <a href="<?php echo URLROOT; ?>/users/register" class="btn btn-light btn-block">No account? Register</a>
                         </div>
+                    </div>
+                    <div class="row m-2">
+                        <a href="<?php echo URLROOT; ?>/resetpasswords/index">
+                            <p>Forgot password</p>
+                        </a>
                     </div>
                 </form>
             </div>

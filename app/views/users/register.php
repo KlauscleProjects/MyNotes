@@ -3,7 +3,7 @@
 <div class="container">
     <div class="card card-outline card-primary m-4">
         <div class="card-header text-center">
-            <p class="h1">REGISTRATION</p>
+            <p class="h1"><?php echo $data['page_title']; ?></p>
         </div>
         <div class="card-primary">
             <div class="card-body">
