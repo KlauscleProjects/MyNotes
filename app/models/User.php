@@ -102,4 +102,17 @@ class User
             return false;
         }
     }
+
+    public function resetPassword($email, $password)
+    {
+        $this->db->query("UPDATE tbl_users SET user_password=:user_password WHERE user_email=:user_email");
+        $this->db->bind(':user_email',  $email);
+        $this->db->bind(':user_password', $password);
+
+        if ($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
