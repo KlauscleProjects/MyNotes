@@ -42,7 +42,7 @@ class Tags extends Controller
             ];
 
             if ($this->tagModel->addTag($data)) {
-                flash('the_message', 'Note successfully created');
+                flash('the_message', 'Tag successfully created');
                 redirect('tags');
             } else {
                 die("Something went wrong");

@@ -68,7 +68,7 @@ class Users extends Controller
 
                 //register user
                 if ($this->userModel->register($data)) {
-                    flash('register_success', 'You are registered and can log in now');
+                    flash('the_message', 'You are registered and can log in now');
                     redirect('users/login');
                 } else {
                     die("Something went wrong");
@@ -233,6 +233,8 @@ class Users extends Controller
                 if ($updatedUserInfo) {
                     //create session
                     $this->createUserSession($updatedUserInfo);
+                    flash('the_message', 'Your information has been updated successfully');
+                    redirect('users/account/' . $user_id);
                 } else {
                     die("Something went wrong");
                 }

@@ -18,6 +18,7 @@
                 <div class="card-primary">
                     <form action="<?php echo URLROOT; ?>/users/account/<?php echo $_SESSION['user_id']; ?>" method="post">
                         <div class="card-body">
+                            <?php flash('the_message'); ?>
                             <p>You can edit your information here.</p>
                             <div class="form-group">
                                 <label for="name">First Name: <sup>*</sup></label>

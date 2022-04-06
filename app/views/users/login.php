@@ -7,6 +7,7 @@
         </div>
         <div class="card-primary">
             <div class="card-body">
+                <?php flash('the_message'); ?>
                 <p>Please fill in your credentials to login</p>
                 <form action="<?php echo URLROOT; ?>/users/login" method="post">
                     <div class="form-group">
@@ -29,7 +30,7 @@
                         </div>
                     </div>
                     <div class="row m-2">
-                        <a href="<?php echo URLROOT; ?>/resetpasswords/index">
+                        <a href="<?php echo URLROOT; ?>/forgotpasswords/index">
                             <p>Forgot password</p>
                         </a>
                     </div>

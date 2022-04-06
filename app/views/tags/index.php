@@ -9,6 +9,7 @@
                     <h1><?php echo $data['page_title']; ?></h1>
                 </div>
             </div>
+            <?php flash('the_message'); ?>
         </div>
     </section>
 
