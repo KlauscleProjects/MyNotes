@@ -4,7 +4,9 @@ class Notes extends Controller
     private $noteModel;
     private $userModel;
     private $tagModel;
+
     private $archiveModel;
+    private $trashModel;
 
     public function __construct()
     {
@@ -15,7 +17,8 @@ class Notes extends Controller
         $this->noteModel = $this->model('Note');
         $this->userModel = $this->model('User');
         $this->tagModel = $this->model('Tag');
-        $this->archiveModel = $this->model('Archive'); //use for the bulk selection 
+        $this->archiveModel = $this->model('Archive'); //use for the bulk selection
+        $this->trashModel = $this->model('Trash'); //use for the bulk selection
     }
 
     public function index()
@@ -193,6 +196,12 @@ class Notes extends Controller
                         break;
                     case '3':
                         $this->archiveModel->restoreNote($note_id);
+                        break;
+                    case '4':
+                        $this->trashModel->restoreNote($note_id);
+                        break;
+                    case '5':
+                        $this->trashModel->deletePermanently($note_id);
                         break;
                     default:
                         break;

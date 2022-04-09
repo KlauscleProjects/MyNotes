@@ -67,7 +67,7 @@ function deleteTag(actionPath, token) {
     sweetAlert(params);
 }
 
-// ARCHIVE SELECTION ACTION
+//=============== ARCHIVE SELECTION ACTION
 function myFunction() {
 
     var selectedBox = [];
@@ -113,6 +113,16 @@ function bulk_option_btn(actionpath) {
             the_messageBefore = selectedBox.length + " items will be unarchive and back again to notes section."
             the_messageSuccessTitle = "Unarchived success";
             the_messageSuccess = "Selected items has been unarchived successfully.";
+            break;
+        case '4':
+            the_messageBefore = selectedBox.length + " items will be restore, this will display again in its original location."
+            the_messageSuccessTitle = "Restored success";
+            the_messageSuccess = "Selected items has been restored successfully.";
+            break;
+        case '5':
+            the_messageBefore = selectedBox.length + " items will be deleted permanently and cannot be restored."
+            the_messageSuccessTitle = "Deleted success";
+            the_messageSuccess = "Selected items has been deleted permanently.";
             break;
         default:
             alert("Please select an action to apply.");
