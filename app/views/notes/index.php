@@ -23,7 +23,6 @@
                         <option value="2">Delete</option>
                     </select>
                     <span class="input-group-append">
-                        <!-- <input type="submit" value="Submit" name="bulk_option_btn" class="btn btn-success" id="bulk_option_btn"> -->
                         <button type="button" class="btn btn-success" onclick="bulk_option_btn('<?php echo URLROOT; ?>/notes/bulkAction/')">Submit</button>
                     </span>
                 </div>
