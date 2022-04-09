@@ -109,6 +109,11 @@ function bulk_option_btn(actionpath) {
             the_messageSuccessTitle = "Deleted success";
             the_messageSuccess = "Selected items has been deleted successfully.";
             break;
+        case '3':
+            the_messageBefore = selectedBox.length + " items will be unarchive and back again to notes section."
+            the_messageSuccessTitle = "Unarchived success";
+            the_messageSuccess = "Selected items has been unarchived successfully.";
+            break;
         default:
             alert("Please select an action to apply.");
             break;
