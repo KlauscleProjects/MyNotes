@@ -6,7 +6,6 @@ function archive_note(actionPath, token) {
         confirmButtonText: "Yes, archive it",
         messageSuccessTitle: "Archiving Success",
         messageSuccess: "Note has been archived successfully",
-        tokenID: token,
         url: actionPath + token,
     };
 
@@ -21,7 +20,6 @@ function delete_note(actionPath, token) {
         confirmButtonText: "Yes, delete it",
         messageSuccessTitle: "Deleted Success",
         messageSuccess: "Note has been deleted successfully",
-        tokenID: token,
         url: actionPath + token,
     };
     sweetAlert(params);
@@ -35,7 +33,6 @@ function restoreNote(actionPath, token) {
         confirmButtonText: "Yes, restore it",
         messageSuccessTitle: "Restoring Success",
         messageSuccess: "Note has been restored successfully.",
-        tokenID: token,
         url: actionPath + token,
     };
 
@@ -50,7 +47,6 @@ function deleteNotePermanently(actionPath, token) {
         confirmButtonText: "Yes, delete it",
         messageSuccessTitle: "Deleted Permanenty",
         messageSuccess: "Note has been deleted permanently.",
-        tokenID: token,
         url: actionPath + token,
     };
 
@@ -65,8 +61,68 @@ function deleteTag(actionPath, token) {
         confirmButtonText: "Yes, delete it",
         messageSuccessTitle: "Deleted Permanenty",
         messageSuccess: "Tag has been deleted permanently.",
-        tokenID: token,
         url: actionPath + token,
+    };
+
+    sweetAlert(params);
+}
+
+// ARCHIVE SELECTION ACTION
+function myFunction() {
+
+    var selectedBox = [];
+    $("input:checkbox[name=checkBoxArray]:checked").each(function() {
+        selectedBox.push($(this).val());
+    });
+
+    var x = document.getElementById("bulk-div");
+    if (selectedBox.length == 0) {
+        x.style.display = "none";
+    } else {
+        x.style.display = "block";
+    }
+}
+
+function bulk_option_btn(actionpath) {
+    //alert("Hey");
+
+    var bulk_option = document.getElementById("bulk_options").value;
+
+    var selectedBox = [];
+    $("input:checkbox[name=checkBoxArray]:checked").each(function() {
+        selectedBox.push($(this).val());
+    });
+
+    if (selectedBox.length == 0) {
+        alert("Please select item to do this operation.");
+        return;
+    }
+
+    switch (bulk_option) {
+        case '1':
+            the_messageBefore = selectedBox.length + " items will only place on your archive, this will not delete items.";
+            the_messageSuccessTitle = "Archived success";
+            the_messageSuccess = "Selected items has been archived successfully.";
+            break;
+        case '2':
+            the_messageBefore = selectedBox.length + " items will go on the trash and not permanently be deleted."
+            the_messageSuccessTitle = "Deleted success";
+            the_messageSuccess = "Selected items has been deleted successfully.";
+            break;
+        default:
+            alert("Please select an action to apply.");
+            break;
+    }
+
+    var params = {
+        messageBefore: the_messageBefore,
+        iconBefore: "warning",
+        confirmButtonText: "Confirm",
+        messageSuccessTitle: the_messageSuccessTitle,
+        messageSuccess: the_messageSuccess,
+        count: selectedBox.length,
+        tokens: selectedBox,
+        url: actionpath + bulk_option
     };
 
     sweetAlert(params);
@@ -86,10 +142,11 @@ function sweetAlert(params) {
             $.ajax({
                 type: "POST",
                 url: params['url'],
-                // data: {
-                //     "btn_set": 1,
-                //     "tokenID": params['tokenID'],
-                // },
+                data: {
+                    //for bulk selection only
+                    "btn_set": 1,
+                    "tokens[]": params['tokens'],
+                },
                 success: function(response) {
                     Swal.fire({
                         title: params['messageSuccessTitle'],

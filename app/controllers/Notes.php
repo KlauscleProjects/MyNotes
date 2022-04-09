@@ -165,4 +165,35 @@ class Notes extends Controller
             }
         }
     }
+
+    public function bulkAction($action)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $selectedIDs = $_POST['tokens'];
+
+            foreach ($selectedIDs as $note_id) {
+                // get existing note from model
+                $note = $this->noteModel->getNoteById($note_id);
+
+                //check for owner
+                if ($note->user_id != $_SESSION['user_id']) {
+                    redirect('notes');
+                }
+
+                switch ($action) {
+                    case '1':
+                        $this->noteModel->archiveNote($note_id);
+                        break;
+                    case '2':
+                        $this->noteModel->toTrashNote($note_id);
+                        break;
+                    default:
+                        break;
+                }
+            }
+            
+        }
+    }
 }
