@@ -27,12 +27,12 @@
                     </span>
                 </div>
             </div>
-            <div class="form-group">
-                <input type="checkbox" id="selectAllRows"> Check all
-            </div>
         </div>
 
         <div class="container-fluid">
+            <div class="form-group">
+                <h5><input type="checkbox" id="selectAllRows"> Check all</h5>
+            </div>
             <div class="row">
 
                 <?php if (count($data['notes']) > 0) : ?>
