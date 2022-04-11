@@ -60,7 +60,7 @@ class Note
     public function getNoteByTagId($tag_id)
     {
         $this->db->query("
-        SELECT * FROM tbl_notes WHERE tag_id=:tag_id AND note_archive=0 AND note_trash=0  
+        SELECT * FROM tbl_notes WHERE tag_id=:tag_id AND note_trash=0 
         ORDER BY tbl_notes.created_at DESC");
         $this->db->bind(':tag_id', $tag_id);
 

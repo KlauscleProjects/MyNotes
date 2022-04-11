@@ -136,4 +136,17 @@ class Tags extends Controller
 
         $this->loadView('tags/show', $data);
     }
+
+    public function bulkDelete()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $selectedIDs = $_POST['tokens'];
+
+            foreach ($selectedIDs as $tag_id) {
+                $this->delete($tag_id);
+            }
+        }
+    }
 }

@@ -13,7 +13,25 @@
     </section>
 
     <section class="content">
+        <div class="input-group col-md-4 form-group" style="display:none" id="bulk-div">
+            <div class="form-group">
+                <div class="input-group input-group">
+                    <select class="custom-select" name="bulk_options" id="bulk_options">
+                        <option value="" style="display:none">Select an option</option>
+                        <option value="4">Restore</option>
+                        <option value="5">Delete</option>
+                    </select>
+                    <span class="input-group-append">
+                        <button type="button" class="btn btn-success" onclick="bulk_option_btn('<?php echo URLROOT; ?>/notes/bulkAction/')">Submit</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
         <div class="container-fluid">
+            <div class="form-group">
+                <h5><input type="checkbox" id="selectAllRows"> Check all</h5>
+            </div>
             <div class="row">
 
                 <?php if (count($data['notes']) > 0) : ?>
@@ -45,6 +63,11 @@
                                                 <span class="badge badge-info"><?php echo $tag->tag_title; ?></span>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
+                                        <div class="float-right">
+                                            <div class="form-check">
+                                                <input class="form-check-input checkbox" type="checkbox" id="selectedCardCB" name="checkBoxArray" value="<?php echo $note->note_id; ?>" onclick="myFunction()">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

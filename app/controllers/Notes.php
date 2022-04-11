@@ -5,6 +5,9 @@ class Notes extends Controller
     private $userModel;
     private $tagModel;
 
+    private $archiveModel;
+    private $trashModel;
+
     public function __construct()
     {
         if (!isLoggedIn()) {
@@ -14,6 +17,8 @@ class Notes extends Controller
         $this->noteModel = $this->model('Note');
         $this->userModel = $this->model('User');
         $this->tagModel = $this->model('Tag');
+        $this->archiveModel = $this->model('Archive'); //use for the bulk selection
+        $this->trashModel = $this->model('Trash'); //use for the bulk selection
     }
 
     public function index()
@@ -162,6 +167,45 @@ class Notes extends Controller
                 //reload the page base on the sweet alert of javascript
             } else {
                 die("Something went wrong");
+            }
+        }
+    }
+
+    public function bulkAction($action)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $selectedIDs = $_POST['tokens'];
+
+            foreach ($selectedIDs as $note_id) {
+                // get existing note from model
+                $note = $this->noteModel->getNoteById($note_id);
+
+                //check for owner
+                if ($note->user_id != $_SESSION['user_id']) {
+                    redirect('notes');
+                }
+
+                switch ($action) {
+                    case '1':
+                        $this->noteModel->archiveNote($note_id);
+                        break;
+                    case '2':
+                        $this->noteModel->toTrashNote($note_id);
+                        break;
+                    case '3':
+                        $this->archiveModel->restoreNote($note_id);
+                        break;
+                    case '4':
+                        $this->trashModel->restoreNote($note_id);
+                        break;
+                    case '5':
+                        $this->trashModel->deletePermanently($note_id);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

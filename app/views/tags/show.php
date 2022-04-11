@@ -20,14 +20,23 @@
                         <?php if ($note->user_id == $_SESSION['user_id']) : ?>
                             <?php if ($data['tag_id'] == $note->tag_id) : ?>
                                 <div class="col-md-3">
-                                    <div class="card bg-gradient-warning">
+                                    <?php if($note->note_archive == 1):?>
+                                        <div class="card bg-gradient-secondary">
+                                    <?php else: ?>
+                                        <div class="card bg-gradient-warning">
+                                    <?php endif;?>   
                                         <div class="card-header">
                                             <b>
                                                 <?php echo $note->note_title; ?>
                                             </b>
                                             <div class="card-tools">
+                                            <?php if($note->note_archive == 1):?>
+                                                <button type="button" class="btn btn-tool" onclick="restoreNote('<?php echo URLROOT; ?>/archives/restore/',<?php echo $note->note_id; ?>)"><i class="fas fa-solid fa-file-arrow-up"></i></button>
+                                                <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/archives/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
+                                            <?php else: ?>
                                                 <button type="button" class="btn btn-tool" onclick="archive_note('<?php echo URLROOT; ?>/notes/archive/', <?php echo $note->note_id; ?>)"><i class="fas fa-archive"></i></button>
                                                 <button type="button" class="btn btn-tool" onclick="delete_note('<?php echo URLROOT; ?>/notes/delete/',<?php echo $note->note_id; ?>)"><i class="fas fa-times"></i></button>
+                                            <?php endif;?>   
                                             </div>
                                         </div>
                                         <a href="<?php echo URLROOT; ?>/notes/edit/<?php echo $note->note_id; ?>" class="note-body">

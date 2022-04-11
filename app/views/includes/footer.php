@@ -14,6 +14,21 @@
         $('#myTable').DataTable({
             //set settings here
         });
+
+        //select all the checkbox for bulk action
+        $('#selectAllRows').click(function(event) {
+            if (this.checked) {
+                $('.checkbox').each(function() {
+                    this.checked = true;
+                });
+                myFunction();
+            } else {
+                $('.checkbox').each(function() {
+                    this.checked = false;
+                });
+                myFunction();
+            }
+        });
     });
 </script>
 
