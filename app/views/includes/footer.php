@@ -21,10 +21,12 @@
                 $('.checkbox').each(function() {
                     this.checked = true;
                 });
+                myFunction();
             } else {
                 $('.checkbox').each(function() {
                     this.checked = false;
                 });
+                myFunction();
             }
         });
     });
