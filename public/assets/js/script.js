@@ -83,7 +83,7 @@ function myFunction() {
     }
 }
 
-function bulk_option_btn(actionpath) {
+function bulk_option_btn(actionPath) {
     //alert("Hey");
 
     var bulk_option = document.getElementById("bulk_options").value;
@@ -137,7 +137,33 @@ function bulk_option_btn(actionpath) {
         messageSuccess: the_messageSuccess,
         count: selectedBox.length,
         tokens: selectedBox,
-        url: actionpath + bulk_option
+        url: actionPath + bulk_option
+    };
+
+    sweetAlert(params);
+}
+
+function bulk_option_tag_btn(actionPath) {
+
+    var selectedBox = [];
+    $("input:checkbox[name=checkBoxArray]:checked").each(function() {
+        selectedBox.push($(this).val());
+    });
+
+    if (selectedBox.length == 0) {
+        alert("Please select item to do this operation.");
+        return;
+    }
+
+    var params = {
+        messageBefore: selectedBox.length + " items will be deleted permanently and cannot be restored.",
+        iconBefore: "warning",
+        confirmButtonText: "Confirm",
+        messageSuccessTitle: "Deleted success",
+        messageSuccess: "Selected items has been deleted permanently.",
+        count: selectedBox.length,
+        tokens: selectedBox,
+        url: actionPath
     };
 
     sweetAlert(params);

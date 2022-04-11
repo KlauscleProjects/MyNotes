@@ -14,6 +14,13 @@
     </section>
 
     <section class="content">
+        <div class="input-group col-md-4 form-group" style="display:none" id="bulk-div">
+            <div class="form-group">
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-danger" onclick="bulk_option_tag_btn('<?php echo URLROOT; ?>/tags/bulkDelete/')">Delete Tag</button>
+                </span>
+            </div>
+        </div>
         <div class="container-fluid">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-7">
@@ -38,6 +45,7 @@
                     <div class="table-responsive">
                         <table id="myTable" class="table table-bordered table-stripe table-hover">
                             <thead class="text-center">
+                                <th><input type="checkbox" id="selectAllRows" class="text-center"></th>
                                 <th>Tag ID</th>
                                 <th>Tag Title</th>
                                 <th>Actions</th>
@@ -46,6 +54,7 @@
                                 <?php foreach ($data['tags'] as $tag) : ?>
                                     <?php if ($tag->user_id == $_SESSION['user_id']) : ?>
                                         <tr>
+                                            <td><input class="checkbox" type="checkbox" id="selectedCardCB" name="checkBoxArray" value="<?php echo $tag->tag_id; ?>" onclick="myFunction()"></td>
                                             <td><?php echo $tag->tag_id; ?></td>
                                             <td><?php echo $tag->tag_title; ?></td>
                                             <td class="text-center py-0 align-middle">
