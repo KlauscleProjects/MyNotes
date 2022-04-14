@@ -17,6 +17,9 @@
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
+                            <a href="<?php echo URLROOT; ?>/pages/about" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
                             <a href="<?php echo URLROOT; ?>/users/register" class="nav-link">Register</a>
                         </li>
                         <?php if (isset($_SESSION['user_id'])) : ?>

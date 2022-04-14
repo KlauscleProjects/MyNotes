@@ -1,5 +1,14 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
-<h1><?php echo $data['title']; ?></h1>
-<p><?php echo $data['description']; ?></p>
-<p>Version: <strong><?php echo APPVERSION; ?></strong></p>
+<?php require APPROOT . '/views/includes/navbar.php'; ?>
+<div class="container">
+
+    <div class="jumbotron jumbotron-flud text-center m-5">
+        <div class="container"></div>
+        <h1 class="display-3"><?php echo SITENAME; ?></h1>
+        <p class="lead"><?php echo $data['description']; ?></p>
+        <p class="lead"><?php echo $_ENV['APP_VERSION'] ?></p>
+        <p class="lead">Developed by: Axcle L. Viray<p>
+    </div>
+
+</div>
 <?php require APPROOT . '/views/includes/footer.php'; ?>
