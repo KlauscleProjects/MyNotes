@@ -13,7 +13,7 @@ class Pages extends Controller
 
         $data = [
             'title' => 'My Notes',
-            'description' => 'A simple note taking web page with login and registration'
+            'description' => 'A simple note taking web page with login and registration.'
         ];
 
         $this->loadView("pages/index", $data);
@@ -23,7 +23,7 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'About Page',
-            'description' => 'A simple note taking web page with login and registration'
+            'description' => 'A simple note taking web page with login and registration.'
         ];
         $this->loadView("pages/about", $data);
     }

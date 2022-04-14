@@ -1,8 +1,8 @@
 <footer class="main-footer">
-    <div class="float-right d-none d-sm-inline">
-        v3.1.0
+    &copy; 2022 Copyright: <b>MyNotes </b>.All Rights Reserved. | <?php echo $_ENV['APP_VERSION'] ?>
+    <div class="float-right d-none d-sm-inline-block">
+        Designed by <a href="https://adminlte.io">AdminLTE.io
     </div>
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
 </footer>
 
 </div>

@@ -5,7 +5,7 @@
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark">
             <div class="container">
                 <a href="<?php echo URLROOT; ?>/pages/index" class="navbar-brand">
-                    <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="MyNotes" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="<?php echo SITENAME; ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
                     <span class="brand-text font-weight-light"><?php echo SITENAME; ?></span>
                 </a>
 
@@ -16,6 +16,9 @@
                 <!-- Right navbar links -->
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="<?php echo URLROOT; ?>/pages/about" class="nav-link">About</a>
+                        </li>
                         <li class="nav-item">
                             <a href="<?php echo URLROOT; ?>/users/register" class="nav-link">Register</a>
                         </li>

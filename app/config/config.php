@@ -1,29 +1,29 @@
 <?php
+
 /**
  * DB Params
  */
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'db_notes');
-
+define('DB_HOST', $_ENV['DB_HOST']);
+define('DB_USER', $_ENV['DB_USER']);
+define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
+define('DB_NAME', $_ENV['DB_NAME']);
 
 //App Root
 define('APPROOT', dirname(__FILE__, 2));
 
 //URL Root
-define('URLROOT', 'http://localhost/MyNotes');
+define('URLROOT', $_ENV['URL_ROOT']);
 
 //Site Name
-define('SITENAME', "MyNotes");
+define('SITENAME', $_ENV['SITE_NAME']);
 
 //App Version
-define('APPVERSION', "1.0.0");
+define('APPVERSION', $_ENV['APP_VERSION']);
 
 //SMTP (PHPMailer)
-define("MAILER_HOST", "smtp.gmail.com");
-define('MAILER_EMAIL', 'sampledummyXYZ@gmail.com');
-define("MAILER_NAME", "Sample Dummy XYZ");
-define('MAILER_PASSWORD', '@SampleDummyXYZ_21');
-define('MAILER_SMTPSECURE', 'tls');
-define('MAILER_PORT', 587);
+define("MAILER_HOST", $_ENV['MAILER_HOST']);
+define('MAILER_EMAIL', $_ENV['MAILER_USERNAME']);
+define("MAILER_NAME", $_ENV['MAILER_NAME']);
+define('MAILER_PASSWORD', $_ENV['MAILER_PASSWORD']);
+define('MAILER_SMTPSECURE', $_ENV['MAILER_SMTP_SECURE']);
+define('MAILER_PORT', $_ENV['MAILER_PORT']);
