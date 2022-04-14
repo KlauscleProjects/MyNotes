@@ -16,8 +16,8 @@
 
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <a href="#" class="brand-link">
-                <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="MyNotes" class="brand-image img-circle elevation-3" style="opacity: .8">
-                <span class="brand-text font-weight-light">MyNotes</span>
+                <img src="<?php echo URLROOT; ?>/assets/img/notes_logo.png" alt="<?php echo SITENAME; ?>" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <span class="brand-text font-weight-light"><?php echo SITENAME; ?></span>
             </a>
 
             <div class="sidebar">
