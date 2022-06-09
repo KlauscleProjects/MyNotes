@@ -1,9 +1,9 @@
 <?php
-require_once realpath(__DIR__ . "/vendor/autoload.php");
+require_once realpath(dirname(__DIR__, 1) . "/vendor/autoload.php");
 
 use Dotenv\Dotenv;
 
-$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv = Dotenv::createImmutable(dirname(__DIR__, 1));
 $dotenv->load();
 
 // load config
